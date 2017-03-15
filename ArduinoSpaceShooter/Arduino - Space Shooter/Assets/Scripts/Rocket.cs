@@ -14,7 +14,7 @@ public class Rocket : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        transform.Translate(Vector2.right * rocketSpeed, Space.World);
+        transform.Translate(Vector2.right * rocketSpeed * Time.deltaTime, Space.World);
     }
 
     void OnCollisionEnter2D(Collision2D col)

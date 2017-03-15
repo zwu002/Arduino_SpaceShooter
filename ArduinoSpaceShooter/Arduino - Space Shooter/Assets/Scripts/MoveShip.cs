@@ -13,6 +13,7 @@ public class MoveShip : MonoBehaviour {
     Vector2 position;
 
     public GameObject rocketo;
+    public GameObject uiManager;
 
     SerialPort sp = new SerialPort("COM4", 9600);
 
@@ -38,7 +39,7 @@ public class MoveShip : MonoBehaviour {
         }
 
         // Shooting
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && (Time.timeScale == 1))
         {
             Fire();
         }
@@ -68,4 +69,13 @@ public class MoveShip : MonoBehaviour {
             transform.position = position;
         }
     }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if (col.gameObject.tag == "Enemy")
+        {
+            uiManager.GetComponent<UIManager>().gameOver = true;
+        }
+    }
+
 }
