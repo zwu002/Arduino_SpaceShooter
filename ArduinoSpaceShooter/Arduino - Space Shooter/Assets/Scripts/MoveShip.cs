@@ -12,6 +12,8 @@ public class MoveShip : MonoBehaviour {
 
     Vector2 position;
 
+    public GameObject rocketo;
+
     SerialPort sp = new SerialPort("COM4", 9600);
 
     void Start () {
@@ -45,7 +47,8 @@ public class MoveShip : MonoBehaviour {
 
     void Fire()
     {
-
+        position = transform.position;
+        Instantiate(rocketo, new Vector2(position.x + 1f, position.y), Quaternion.identity);
     }
 
     void MoveObject(int direction)

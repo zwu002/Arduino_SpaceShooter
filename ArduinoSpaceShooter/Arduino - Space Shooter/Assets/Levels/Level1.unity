@@ -322,6 +322,7 @@ MonoBehaviour:
   speed: 5
   minPos: -4.6
   maxPos: 4.6
+  rocketo: {fileID: 105552, guid: ff5cbc8bc8515ac47aa4c9545589765c, type: 2}
 --- !u!212 &1085400870
 SpriteRenderer:
   m_ObjectHideFlags: 0
