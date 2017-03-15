@@ -11,9 +11,10 @@ GameObject:
   - 212: {fileID: 21225186}
   - 61: {fileID: 6144018}
   - 50: {fileID: 5074910}
+  - 114: {fileID: 11488218}
   m_Layer: 0
   m_Name: Rocket
-  m_TagString: Untagged
+  m_TagString: Rocket
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,6 +62,18 @@ BoxCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Size: {x: 0.66, y: 0.27}
+--- !u!114 &11488218
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2e6d0ac9ba7dd74b88d165709959eb7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rocketSpeed: 0.2
 --- !u!212 &21225186
 SpriteRenderer:
   m_ObjectHideFlags: 1
