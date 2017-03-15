@@ -7,6 +7,11 @@ public class MoveShip : MonoBehaviour {
     public float speed = 1;
     float amountToMove;
 
+    public float minPos;
+    public float maxPos;
+
+    Vector2 position;
+
     SerialPort sp = new SerialPort("COM4", 9600);
 
     void Start () {
@@ -29,17 +34,35 @@ public class MoveShip : MonoBehaviour {
 
             }
         }
-	}
+
+        // Shooting
+        if (Input.GetButtonDown("Fire1"))
+        {
+            Fire();
+        }
+
+    }
+
+    void Fire()
+    {
+
+    }
 
     void MoveObject(int direction)
     {
-        if (direction == 1)
+        if (direction == 2)
         {
             transform.Translate(Vector2.up * amountToMove, Space.World);
+            position = transform.position;
+            position.y = Mathf.Clamp(position.y, minPos, maxPos);
+            transform.position = position;
         }
-        else if (direction == 2)
+        else if (direction == 1)
         {
             transform.Translate(Vector2.down * amountToMove, Space.World);
+            position = transform.position;
+            position.y = Mathf.Clamp(position.y, minPos, maxPos);
+            transform.position = position;
         }
     }
 }
