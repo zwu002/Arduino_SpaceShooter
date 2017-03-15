@@ -74,6 +74,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rocketSpeed: 0.2
+  uiManager: {fileID: 135072, guid: 5f36e3a4a4d32c64081918af39137b72, type: 2}
 --- !u!212 &21225186
 SpriteRenderer:
   m_ObjectHideFlags: 1

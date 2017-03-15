@@ -17,4 +17,9 @@ public class UIManager : MonoBehaviour {
 	void Update () {
         scoreText.text = "Score: " + score;
     }
+
+    public void scoreUpdate()
+    {
+        score++;
+    }
 }
