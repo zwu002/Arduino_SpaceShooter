@@ -21,10 +21,10 @@ public class Rocket : MonoBehaviour {
     {
         if (col.gameObject.tag == "Border")
         {
-            gameObject.SetActive(false);
+            gameObject.SetActive(false); // Clean rockets outside the screen
         }
 
-        if (col.gameObject.tag == "Enemy")
+        if (col.gameObject.tag == "Enemy") // Hit event
         {
             uiManager.GetComponent<UIManager>().scoreUpdate();
             gameObject.SetActive(false);

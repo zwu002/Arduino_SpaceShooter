@@ -30,11 +30,6 @@ public class UIManager : MonoBehaviour {
         {
             gameOverActivate();
         }
-
-        if (gameOver == true && Input.GetButtonDown("Fire1"))
-        {
-            Replay();
-        }
     }
 
     public void scoreUpdate()

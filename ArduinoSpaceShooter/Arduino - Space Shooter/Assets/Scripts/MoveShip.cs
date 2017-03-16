@@ -14,12 +14,21 @@ public class MoveShip : MonoBehaviour {
 
     public GameObject rocketo;
     public GameObject uiManager;
+    public GameObject ship;
+
+    float previousTime;
+    public float shootingTimeGap;
 
     SerialPort sp = new SerialPort("COM4", 9600);
+
+    Rigidbody2D rb;
 
     void Start () {
         sp.Open();
         sp.ReadTimeout = 1;
+        previousTime = Time.time + 1;
+
+        rb = ship.gameObject.GetComponent<Rigidbody2D>();
 	}
 	
 	void Update () {
@@ -29,21 +38,16 @@ public class MoveShip : MonoBehaviour {
         {
             try
             {
-                MoveObject(sp.ReadByte());
-                print(sp.ReadByte());
+                NextMove(sp.ReadByte());
             }
             catch (System.Exception)
             {
 
             }
         }
-
-        // Shooting
-        if (Input.GetButtonDown("Fire1") && (Time.timeScale == 1))
-        {
-            Fire();
-        }
-
+        position = transform.position;
+        position.y = Mathf.Clamp(position.y, minPos, maxPos);
+        transform.position = position;
     }
 
     void Fire()
@@ -52,21 +56,25 @@ public class MoveShip : MonoBehaviour {
         Instantiate(rocketo, new Vector2(position.x + 1f, position.y), Quaternion.identity);
     }
 
-    void MoveObject(int direction)
+    void NextMove(int direction)
     {
         if (direction == 2)
         {
-            transform.Translate(Vector2.up * amountToMove, Space.World);
+            rb.velocity = new Vector2(0, speed * Time.deltaTime);
             position = transform.position;
             position.y = Mathf.Clamp(position.y, minPos, maxPos);
             transform.position = position;
         }
-        else if (direction == 1)
+
+        if (direction == 3 && (Time.time - previousTime) > shootingTimeGap)
         {
-            transform.Translate(Vector2.down * amountToMove, Space.World);
-            position = transform.position;
-            position.y = Mathf.Clamp(position.y, minPos, maxPos);
-            transform.position = position;
+            Fire();
+            previousTime = Time.time;
+        }
+        
+        if (direction == 3 && Time.timeScale == 0)
+        {
+            uiManager.GetComponent<UIManager>().Replay();
         }
     }
 
