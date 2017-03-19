@@ -27,6 +27,7 @@ public class Rocket : MonoBehaviour {
         if (col.gameObject.tag == "Enemy") // Hit event
         {
             uiManager.GetComponent<UIManager>().scoreUpdate();
+            uiManager.GetComponent<UIManager>().bang.Play();
             gameObject.SetActive(false);
             col.gameObject.SetActive(false);
         }

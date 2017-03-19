@@ -10,14 +10,19 @@ public class UIManager : MonoBehaviour {
     public Text scoreText;
     public Text gameOverText;
     public Text gameOverTextII;
+    public Text startText;
+    public Text startTextII;
+    public AudioSource bang;
     public int score;
 
     public bool gameOver;
+    public bool gameStart;
 
 	// Use this for initialization
 	void Start () {
         gameOver = false;
-        Time.timeScale = 1;
+        gameStart = true;
+        Time.timeScale = 0;
         score = 0;
         currentScene = SceneManager.GetActiveScene();
 	}

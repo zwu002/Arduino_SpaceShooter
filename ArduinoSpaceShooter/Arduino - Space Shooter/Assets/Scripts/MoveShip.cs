@@ -72,9 +72,15 @@ public class MoveShip : MonoBehaviour {
             previousTime = Time.time;
         }
         
-        if (direction == 3 && Time.timeScale == 0)
+        if (direction == 3 && Time.timeScale == 0 && uiManager.GetComponent<UIManager>().gameOver == true)
         {
             uiManager.GetComponent<UIManager>().Replay();
+        }
+        else if (direction == 3 && Time.timeScale == 0 && uiManager.GetComponent<UIManager>().gameStart == true)
+        {
+            uiManager.GetComponent<UIManager>().startText.gameObject.SetActive(false);
+            uiManager.GetComponent<UIManager>().startTextII.gameObject.SetActive(false);
+            Time.timeScale = 1;
         }
     }
 
@@ -83,6 +89,7 @@ public class MoveShip : MonoBehaviour {
         if (col.gameObject.tag == "Enemy")
         {
             uiManager.GetComponent<UIManager>().gameOver = true;
+            uiManager.GetComponent<UIManager>().bang.Play();
         }
     }
 
