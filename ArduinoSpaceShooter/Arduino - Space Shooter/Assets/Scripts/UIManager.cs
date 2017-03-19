@@ -35,6 +35,11 @@ public class UIManager : MonoBehaviour {
         {
             gameOverActivate();
         }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Exit();
+        }
     }
 
     public void scoreUpdate()
@@ -54,4 +59,8 @@ public class UIManager : MonoBehaviour {
         SceneManager.LoadScene(currentScene.name);
     }
 
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
